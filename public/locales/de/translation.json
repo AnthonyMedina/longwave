@@ -70,6 +70,7 @@
         "last_card": "Letzte Karte!",
         "card_remaining": "Karten verbleiben",
         "coop_score": "Koop Punktestand",
+        "point": "PUNKT",
         "points": "PUNKTE"
     },
     "setupgame": {
@@ -86,6 +87,7 @@
         "reset_game": "Spiel zurücksetzen",
         "game_finished": "Spiel beendet",
         "final_score_team": "Der finale Punktestand Deines Teams",
+        "point": "PUNKT",
         "points": "PUNKTE",
         "catching_up": "Aufholjagd aktiviert: {{scoringteam}} erhielt einen Bonuszug!",
         "catching_up_info": "Nachdem Dein team einen 4-Punkte Zug erreicht hat, erhält das Team einen weiteren Zug, sollte es weiterhin hinter dem anderem Team liegen.",

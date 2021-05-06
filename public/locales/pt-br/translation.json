@@ -70,6 +70,7 @@
     "last_card": "Última carta!",
     "card_remaining": "Cartas restantes",
     "coop_score": "Pontuação cooperativa",
+    "point": "PONTO",
     "points": "PONTOS"
   },
   "setupgame": {
@@ -86,6 +87,7 @@
     "reset_game": "Resetar partida",
     "game_finished": "Partida encerrada",
     "final_score_team": "A pontuação final cooperativa do seu time",
+    "point": "PONTO",
     "points": "PONTOS",
     "catching_up": "Fôlego extra ativado: {{scoringteam}} ganha um turno bônus!",
     "catching_up_info": "After a team scores a four-point round, they get a bonus turn if they are still behind the other team",

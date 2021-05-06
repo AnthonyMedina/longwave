@@ -11,8 +11,8 @@ import firebase from "firebase/app";
 import App from "./components/App";
 import { firebaseConfig } from "./firebaseConfig";
 
-// import i18n (needs to be bundled ;))
-import "./i18n";
+import { I18nextProvider } from 'react-i18next';
+import i18n from "./i18n";
 
 firebase.initializeApp(firebaseConfig);
 firebase.analytics().logEvent("screen_view", {
@@ -23,7 +23,9 @@ firebase.analytics().logEvent("screen_view", {
 ReactDOM.render(
   <React.StrictMode>
     <Suspense fallback={<div>Loading...</div>}>
-      <App />
+      <I18nextProvider i18n={i18n}>
+        <App />
+      </I18nextProvider>
     </Suspense>
   </React.StrictMode>,
   document.getElementById("root")

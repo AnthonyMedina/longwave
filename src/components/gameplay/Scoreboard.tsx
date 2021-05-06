@@ -38,7 +38,9 @@ export function Scoreboard() {
       <CenteredColumn style={style}>
         <em>
           {t("scoreboard.coop_score")}: {gameState.coopScore}{" "}
-          {t("scoreboard.points")}
+          {gameState.coopScore === 1 ?
+            t("scoreboard.point") :
+            t("scoreboard.points")}
         </em>
         <div>
           {cardsRemaining === 0
@@ -72,7 +74,9 @@ function TeamColumn(props: { team: Team; score: number }) {
     <CenteredColumn style={{ alignItems: "flex-start" }}>
       <div>
         {TeamName(props.team)}: <AnimatableScore score={props.score} />{" "}
-        {t("scoreboard.points")}
+        {props.score === 1 ?
+          t("scoreboard.point") :
+          t("scoreboard.points")}
       </div>
       {members.map(toPlayerRow)}
     </CenteredColumn>

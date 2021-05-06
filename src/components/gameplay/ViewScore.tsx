@@ -50,11 +50,12 @@ export function ViewScore() {
           <strong>{gameState.clue}</strong>
         </div>
         <div>
-          {t("viewscore.score")}: {score} {t("viewscore.points")}!
+          {t("viewscore.score")}: {score}{" "}
+          {score === 1 ? t("viewscore.point") : t("viewscore.points")}!
         </div>
         {gameState.gameType === GameType.Teams && (
           <div>
-            {TeamName(TeamReverse(clueGiver.team))} {t("viewscore.got")}
+            {TeamName(TeamReverse(clueGiver.team))} {t("viewscore.got")}{" "}
             {wasCounterGuessCorrect
               ? t("viewscore.1_point_correct_guess")
               : t("viewscore.0_point_wrong_guess")}
@@ -125,7 +126,10 @@ function NextTurnOrEndGame() {
         <div>
           {t("viewscore.final_score_team")}:{" "}
           <strong>
-            {gameState.coopScore} {t("viewscore.points")}
+            {gameState.coopScore}{" "}
+            {gameState.coopScore === 1 ?
+              t("viewscore.point") :
+              t("viewscore.points")}
           </strong>
         </div>
         {resetButton}

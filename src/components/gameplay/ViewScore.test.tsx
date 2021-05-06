@@ -1,9 +1,11 @@
 import React from "react";
 import { render } from "@testing-library/react";
+import { I18nextProvider } from 'react-i18next';
 import { ViewScore } from "./ViewScore";
 import { InitialGameState, Team, GameState } from "../../state/GameState";
 import { BuildGameModel } from "../../state/BuildGameModel";
 import { GameModelContext } from "../../state/GameModelContext";
+import i18n from '../../i18nForTests';
 
 const onePlayerGame: GameState = {
   ...InitialGameState(),
@@ -27,11 +29,14 @@ test("Applies 4 points for a perfect guess", () => {
     <GameModelContext.Provider
       value={BuildGameModel(gameState, jest.fn(), "playerId")}
     >
-      <ViewScore />
+      <I18nextProvider i18n={i18n}>
+        <ViewScore />
+      </I18nextProvider>
     </GameModelContext.Provider>
   );
 
-  const subject = component.getByText("Score: 4 points!");
+  const subject = component.getByText(/Score:/);
+  expect(subject).toHaveTextContent("4 POINTS!")
   expect(subject).toBeInTheDocument();
 });
 
@@ -46,11 +51,14 @@ test("Applies 2 points for off by 2", () => {
     <GameModelContext.Provider
       value={BuildGameModel(gameState, jest.fn(), "playerId")}
     >
-      <ViewScore />
+      <I18nextProvider i18n={i18n}>
+        <ViewScore />
+      </I18nextProvider>
     </GameModelContext.Provider>
   );
 
-  const subject = component.getByText("Score: 2 points!");
+  const subject = component.getByText(/Score:/);
+  expect(subject).toHaveTextContent("2 POINTS!")
   expect(subject).toBeInTheDocument();
 });
 
@@ -65,11 +73,14 @@ test("Applies 0 points for off by 3", () => {
     <GameModelContext.Provider
       value={BuildGameModel(gameState, jest.fn(), "playerId")}
     >
-      <ViewScore />
+      <I18nextProvider i18n={i18n}>
+        <ViewScore />
+      </I18nextProvider>
     </GameModelContext.Provider>
   );
-
-  const subject = component.getByText("Score: 0 points!");
+  
+  const subject = component.getByText(/Score:/);
+  expect(subject).toHaveTextContent("0 POINTS!")
   expect(subject).toBeInTheDocument();
 });
 
@@ -80,18 +91,19 @@ test("Includes the score for a correct counter guess", () => {
     guess: 3,
     counterGuess: "left",
   };
-
+  
   const component = render(
     <GameModelContext.Provider
-      value={BuildGameModel(gameState, jest.fn(), "playerId")}
+    value={BuildGameModel(gameState, jest.fn(), "playerId")}
     >
-      <ViewScore />
+      <I18nextProvider i18n={i18n}>
+        <ViewScore />
+      </I18nextProvider>
     </GameModelContext.Provider>
   );
-
-  const subject = component.getByText(
-    "RIGHT BRAIN gets 1 point for their correct counter guess."
-  );
+  
+  const subject = component.getByText(/RIGHT BRAIN/);
+  expect(subject).toHaveTextContent("gets 1 point for their correct counter guess.")
   expect(subject).toBeInTheDocument();
 });
 
@@ -107,7 +119,9 @@ test("Includes the score for a wrong counter guess", () => {
     <GameModelContext.Provider
       value={BuildGameModel(gameState, jest.fn(), "playerId")}
     >
-      <ViewScore />
+      <I18nextProvider i18n={i18n}>
+        <ViewScore />
+      </I18nextProvider>
     </GameModelContext.Provider>
   );
 
@@ -129,7 +143,9 @@ test("Applies catchup rule", () => {
     <GameModelContext.Provider
       value={BuildGameModel(gameState, jest.fn(), "playerId")}
     >
-      <ViewScore />
+      <I18nextProvider i18n={i18n}>
+        <ViewScore />
+      </I18nextProvider>
     </GameModelContext.Provider>
   );
 
@@ -149,7 +165,9 @@ test("Ends game when one team has 10 points", () => {
     <GameModelContext.Provider
       value={BuildGameModel(gameState, jest.fn(), "playerId")}
     >
-      <ViewScore />
+      <I18nextProvider i18n={i18n}>
+        <ViewScore />
+      </I18nextProvider>
     </GameModelContext.Provider>
   );
 
@@ -168,7 +186,9 @@ test("Does not end game when both teams have 10 points", () => {
     <GameModelContext.Provider
       value={BuildGameModel(gameState, jest.fn(), "playerId")}
     >
-      <ViewScore />
+      <I18nextProvider i18n={i18n}>
+        <ViewScore />
+      </I18nextProvider>
     </GameModelContext.Provider>
   );
 
